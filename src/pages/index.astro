@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import SiteLayout from '../layouts/SiteLayout.astro';
 import MentorshipCard from '../components/MentorshipCard.astro';
+import ProjectRow from '../components/ProjectRow.astro';
 import { profile, projects, socialLinks } from '../data/site';
 
 const research = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
@@ -130,55 +131,12 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, '')}`;
         <p class="eyebrow">Making</p>
         <h2 id="projects-heading">Projects</h2>
       </div>
+      <a class="text-link" href={withBase('projects/')}>
+        View all <span aria-hidden="true">→</span>
+      </a>
     </div>
 
-    {
-      projects.map((project) => {
-        const Media = project.imageUrl ? 'a' : 'div';
-        const externalImageLink = project.imageUrl?.startsWith('http');
-        return (
-          <article class="project-row">
-            <Media
-              class="project-media"
-              href={project.imageUrl ? (externalImageLink ? project.imageUrl : withBase(project.imageUrl)) : undefined}
-              target={externalImageLink ? '_blank' : undefined}
-              rel={externalImageLink ? 'noreferrer' : undefined}
-              aria-label={project.imageUrl ? `View ${project.title} ${externalImageLink ? 'news' : 'project page'}` : undefined}
-            >
-              <img
-                src={withBase(project.image)}
-                alt={project.imageAlt}
-                width={project.imageWidth}
-                height={project.imageHeight}
-                style={`aspect-ratio: ${project.imageWidth} / ${project.imageHeight}`}
-                loading="lazy"
-              />
-            </Media>
-            <div class="project-copy">
-              <p class="work-meta"><span>{project.context}</span></p>
-              <h3>{project.title}</h3>
-              <p>{project.summary}</p>
-              <div class="link-row">
-                {project.projectPage && (
-                  <a href={withBase(project.projectPage)}>
-                    Project Page<span aria-hidden="true">↗</span>
-                  </a>
-                )}
-                {project.links.map((link) => (
-                  <a
-                    href={link.url.startsWith('http') ? link.url : withBase(link.url)}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {link.label}<span aria-hidden="true">↗</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </article>
-        );
-      })
-    }
+    {projects.slice(0, 3).map((project) => <ProjectRow project={project} />)}
   </section>
   <section class="section shell home-mentorship" id="mentorship" aria-labelledby="mentorship-heading">
     <div class="section-heading">

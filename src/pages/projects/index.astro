@@ -1,0 +1,20 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ProjectRow from '../../components/ProjectRow.astro';
+import { profile, projects } from '../../data/site';
+---
+
+<SiteLayout
+  title="Projects"
+  description={`${profile.name}'s projects in engineering design, CAD modeling, and hardware.`}
+>
+  <header class="page-header shell">
+    <p class="eyebrow">Making</p>
+    <h1>Projects</h1>
+    <p class="page-intro">Design, modeling, and hardware projects.</p>
+  </header>
+
+  <section class="section shell projects-index" aria-label="All projects">
+    {projects.map((project) => <ProjectRow project={project} heading="h2" />)}
+  </section>
+</SiteLayout>

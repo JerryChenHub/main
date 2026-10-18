@@ -100,8 +100,25 @@ export const mae106Rover = {
   ],
 };
 
+export const cessna162G = {
+  title: 'Cessna 162-G',
+  summary:
+    'I modeled the Cessna I use for flight training in SolidWorks, using photos and measurements from the real aircraft. The assembly includes a rotating propeller, opening doors, and movable flight controls.',
+  context: 'SolidWorks · Course CAD project',
+  image: 'media/cessna_162_g/propeller_poster.webp',
+  imageAlt: 'The yellow and white Cessna 162 CAD assembly shown in the propeller animation',
+  imageWidth: 1920,
+  imageHeight: 1080,
+  imageUrl: 'projects/cessna_162_g/',
+  projectPage: 'projects/cessna_162_g/',
+  links: [
+    { label: 'Course Final Report', url: 'reports/Cessna_162_G_Course_Final_Report.pdf' },
+  ],
+};
+
 export const projects = [
   nasaBlueSkies,
   uciLiquidRocket,
+  cessna162G,
   mae106Rover,
 ];

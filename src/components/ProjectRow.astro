@@ -1,0 +1,64 @@
+---
+import type { projects } from '../data/site';
+
+interface Props {
+  project: (typeof projects)[number];
+  heading?: 'h2' | 'h3';
+}
+
+const { project, heading: Heading = 'h3' } = Astro.props;
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+const Media = project.imageUrl ? 'a' : 'div';
+const externalImageLink = project.imageUrl?.startsWith('http');
+---
+
+<article class="project-row">
+  <Media
+    class="project-media"
+    href={project.imageUrl ? (externalImageLink ? project.imageUrl : withBase(project.imageUrl)) : undefined}
+    target={externalImageLink ? '_blank' : undefined}
+    rel={externalImageLink ? 'noreferrer' : undefined}
+    aria-label={project.imageUrl ? `View ${project.title} ${externalImageLink ? 'news' : 'project page'}` : undefined}
+  >
+    <img
+      src={withBase(project.image)}
+      alt={project.imageAlt}
+      width={project.imageWidth}
+      height={project.imageHeight}
+      style={`aspect-ratio: ${project.imageWidth} / ${project.imageHeight}`}
+      loading="lazy"
+    />
+  </Media>
+  <div class="project-copy">
+    <p class="work-meta"><span>{project.context}</span></p>
+    <Heading>{project.title}</Heading>
+    <p>{project.summary}</p>
+    <div class="link-row">
+      {project.projectPage && (
+        <a href={withBase(project.projectPage)}>
+          Project Page<span aria-hidden="true">↗</span>
+        </a>
+      )}
+      {project.links.map((link) => (
+        <a
+          href={link.url.startsWith('http') ? link.url : withBase(link.url)}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {link.label}<span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</article>
+
+<style>
+  .project-copy h2 {
+    margin-bottom: 10px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.22;
+  }
+</style>

@@ -1,0 +1,169 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { cessna162G } from '../../data/site';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path.replace(/^\//, '')}`;
+const media = (filename: string) => withBase(`media/cessna_162_g/${filename}`);
+const reportUrl = withBase(cessna162G.links[0].url);
+const animations = [
+  {
+    title: 'Exploded assembly',
+    file: '01_Explosion.mp4',
+    poster: 'explosion_poster.webp',
+    caption: 'The aircraft separates into its components to show how the assembly fits together.',
+  },
+  {
+    title: 'Propeller rotation',
+    file: '02_Propeller.mp4',
+    poster: 'propeller_poster.webp',
+    caption: 'The propeller rotates independently of the airframe.',
+  },
+  {
+    title: 'Door motion',
+    file: '03_Doors.mp4',
+    poster: 'doors_poster.webp',
+    caption: 'The cabin doors open and close on their hinges.',
+  },
+  {
+    title: 'Flight controls',
+    file: '04_Flight_Controls.mp4',
+    poster: 'flight_controls_poster.webp',
+    caption: 'Individually modeled control surfaces move within the aircraft assembly.',
+  },
+];
+---
+
+<SiteLayout title={cessna162G.title} description={cessna162G.summary} image="media/cessna_162_g/assembly_side.webp">
+  <article class="detail-page shell cessna-project">
+    <a class="back-link" href={withBase('projects/')}>
+      <span aria-hidden="true">←</span> All projects
+    </a>
+
+    <header class="detail-header">
+      <p class="work-meta"><span>{cessna162G.context}</span></p>
+      <h1>{cessna162G.title}</h1>
+      <p class="detail-summary">
+        A SolidWorks model of the Cessna Skycatcher 162 I use for flight training, with movable
+        parts and details taken from the real aircraft.
+      </p>
+      <div class="link-row detail-actions">
+        <a href={reportUrl} target="_blank" rel="noreferrer">
+          Course Final Report<span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </header>
+
+    <figure class="aircraft-figure hero-figure">
+      <a href={media('assembly_side.webp')} target="_blank" rel="noreferrer" aria-label="Open the aircraft side view at full size">
+        <img src={media('assembly_side.webp')} alt="Side view of the completed yellow and white Cessna 162 model, with N7030B markings, cabin details, and landing gear" width="2044" height="859" fetchpriority="high" />
+      </a>
+      <figcaption>The completed model, with the N7030B markings and paint scheme of the aircraft I fly.</figcaption>
+    </figure>
+
+    <section class="project-section overview-grid" aria-labelledby="overview-heading">
+      <div class="section-copy">
+        <h2 id="overview-heading">From aircraft to CAD</h2>
+        <p>
+          I chose N7030B for my course final project because it is the light sport aircraft I use
+          for flight training. I photographed the airplane and took measurements on the physical
+          aircraft to guide the model.
+        </p>
+        <p>
+          The goal was to capture both its appearance and its motion, from the paint scheme and
+          cockpit details to the propeller, doors, and individual flight control surfaces.
+        </p>
+      </div>
+      <figure class="aircraft-figure reference-figure">
+        <a href={media('reference_photos.webp')} target="_blank" rel="noreferrer" aria-label="Open the aircraft reference photos from the report">
+          <img src={media('reference_photos.webp')} alt="Three reference photographs of the real yellow and white N7030B aircraft on the ramp" width="3696" height="1200" loading="lazy" />
+        </a>
+        <figcaption>Reference photographs included in the course report.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section" aria-labelledby="modeling-heading">
+      <div class="section-copy modeling-copy">
+        <h2 id="modeling-heading">Building the model</h2>
+        <p>
+          I sketched the fuselage from a reference image, then used boundary surfaces and the
+          Thicken feature to create its shape. I modeled the wing, flaps, rudder, and elevator
+          using Loft, Sweep, Extrude, and Fillet features.
+        </p>
+        <p>
+          I added the paint scheme and smaller details such as the pitot tube, exhaust, and trim.
+          The control surfaces were created as separate parts so they could move within the assembly.
+        </p>
+      </div>
+      <figure class="aircraft-figure assembly-figure">
+        <a href={media('assembly_isometric.webp')} target="_blank" rel="noreferrer" aria-label="Open the SolidWorks assembly screenshot at full size">
+          <img src={media('assembly_isometric.webp')} alt="SolidWorks isometric view of the Cessna assembly with the component tree showing the airframe, propeller, control surfaces, wheels, cabin, and doors" width="2056" height="1489" loading="lazy" />
+        </a>
+        <figcaption>The SolidWorks assembly, with separate components for the cabin, doors, landing gear, and flight controls.</figcaption>
+      </figure>
+    </section>
+
+    <section class="project-section" aria-labelledby="animations-heading">
+      <div class="section-copy">
+        <h2 id="animations-heading">Assembly in motion</h2>
+        <p>Four animations show the component layout and the motion of the assembled parts.</p>
+      </div>
+      <div class="video-grid">
+        {animations.map((animation) => (
+          <figure class="aircraft-figure video-figure">
+            <h3>{animation.title}</h3>
+            <video controls playsinline preload="none" poster={media(animation.poster)} aria-label={animation.title}>
+              <source src={withBase(`videos/cessna_162_g/${animation.file}`)} type="video/mp4" />
+              Your browser does not support embedded video. <a href={withBase(`videos/cessna_162_g/${animation.file}`)}>Open the video</a>.
+            </video>
+            <figcaption>{animation.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
+    <section class="project-section simulation-grid" aria-labelledby="simulation-heading">
+      <div class="section-copy">
+        <h2 id="simulation-heading">Propeller simulation</h2>
+        <p>
+          I applied a constant pressure load to the propeller and examined the resulting von Mises
+          stress. In the simulation reported for the course, the stress remained below the material's
+          yield limit.
+        </p>
+      </div>
+      <figure class="aircraft-figure">
+        <a href={media('propeller_stress.webp')} target="_blank" rel="noreferrer" aria-label="Open the propeller stress result from the report">
+          <img src={media('propeller_stress.webp')} alt="Propeller von Mises stress plot from the course report showing the applied pressure load and material yield strength marker" width="1005" height="490" loading="lazy" />
+        </a>
+        <figcaption>The constant pressure load case shown in the course final report.</figcaption>
+      </figure>
+    </section>
+  </article>
+</SiteLayout>
+
+<style>
+  .back-link { margin-bottom: 42px; }
+  .detail-summary { max-width: 760px; }
+  .aircraft-figure { min-width: 0; margin: 0; }
+  .aircraft-figure a { display: block; }
+  .aircraft-figure img, .aircraft-figure video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
+  .aircraft-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .hero-figure { margin-top: 36px; }
+  .project-section { margin-top: clamp(44px, 7vw, 68px); }
+  .section-copy h2 { margin-bottom: 18px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(27px, 3.8vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; }
+  .section-copy p { color: var(--muted); }
+  .section-copy p:last-child { margin-bottom: 0; }
+  .overview-grid { display: grid; grid-template-columns: 1fr; gap: 26px; }
+  .overview-grid .section-copy, .modeling-copy { max-width: 760px; }
+  .reference-figure { max-width: 760px; }
+  .reference-figure img { background: white; }
+  .assembly-figure { max-width: 840px; margin-top: 28px; }
+  .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
+  .video-figure h3 { margin-bottom: 12px; font-family: Georgia, 'Times New Roman', serif; font-size: 23px; font-weight: 500; line-height: 1.3; }
+  .video-grid video { aspect-ratio: 16 / 9; object-fit: contain; background: #f2f3f4; }
+  .simulation-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: center; gap: 32px; }
+  @media (max-width: 700px) {
+    .video-grid, .simulation-grid { grid-template-columns: 1fr; }
+    .video-grid { gap: 28px; }
+  }
+</style>
