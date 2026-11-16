@@ -144,6 +144,19 @@ export const hovercraft = {
   links: [],
 };
 
+export const bluetoothSpeaker = {
+  title: 'Bluetooth Speaker',
+  summary: 'A 3D printed Bluetooth speaker that also serves as a night light.',
+  context: 'Personal project · 3D printing',
+  image: 'media/bluetooth_speaker/speaker.jpg',
+  imageAlt: 'A Bluetooth speaker with a glowing night light on a 3D printer',
+  imageWidth: 596,
+  imageHeight: 796,
+  imageUrl: 'projects/bluetooth_speaker/',
+  projectPage: 'projects/bluetooth_speaker/',
+  links: [],
+};
+
 export const projects = [
   nasaBlueSkies,
   uciLiquidRocket,
@@ -151,4 +164,5 @@ export const projects = [
   mae106Rover,
   structuralHealthMonitoring,
   hovercraft,
+  bluetoothSpeaker,
 ];

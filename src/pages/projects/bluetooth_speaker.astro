@@ -1,0 +1,46 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { bluetoothSpeaker as project } from '../../data/site';
+
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+---
+
+<SiteLayout title={project.title} description={project.summary} image={project.image}>
+  <article class="detail-page shell speaker-project">
+    <a class="back-link" href={withBase('projects/')}>
+      <span aria-hidden="true">←</span> All projects
+    </a>
+    <div class="speaker-overview">
+      <header class="detail-header">
+        <div class="work-meta"><span>{project.context}</span></div>
+        <h1>{project.title}</h1>
+        <p class="detail-summary">{project.summary}</p>
+      </header>
+      <figure class="speaker-photo">
+        <a href={withBase(project.image)} target="_blank" rel="noreferrer" aria-label="Open the Bluetooth speaker photo at full size">
+          <img
+            src={withBase(project.image)}
+            alt={project.imageAlt}
+            width={project.imageWidth}
+            height={project.imageHeight}
+            fetchpriority="high"
+          />
+        </a>
+      </figure>
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  .back-link { margin-bottom: 40px; }
+  .speaker-overview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 420px); gap: clamp(32px, 6vw, 64px); align-items: center; }
+  .detail-header h1 { font-size: clamp(42px, 6vw, 64px); }
+  .detail-summary { margin-bottom: 0; }
+  .speaker-photo { margin: 0; }
+  .speaker-photo a { display: block; }
+  .speaker-photo img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
+  @media (max-width: 700px) {
+    .speaker-overview { grid-template-columns: 1fr; }
+    .speaker-photo { width: 100%; max-width: 420px; }
+  }
+</style>
