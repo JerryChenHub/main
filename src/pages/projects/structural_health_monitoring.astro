@@ -1,0 +1,122 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { structuralHealthMonitoring as project } from '../../data/site';
+
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+const media = (name: string) => withBase(`media/structural_health_monitoring/${name}`);
+---
+
+<SiteLayout title={project.title} description={project.summary} image={project.image}>
+  <article class="detail-page shell wing-project">
+    <a class="back-link" href={withBase('projects/')}>
+      <span aria-hidden="true">←</span> All projects
+    </a>
+
+    <header class="detail-header">
+      <div class="work-meta"><span>{project.context}</span></div>
+      <h1>{project.title}</h1>
+      <p class="detail-summary">Building a composite wing and collecting data in flight.</p>
+      <p class="intro-copy">
+        In summer 2026, our team built a blended wing body (BWB) wing and carried out
+        flight tests to collect data for structural health monitoring. I contributed
+        to the wing's fabrication, onboard sensor and controller setup, and analysis
+        of the flight data.
+      </p>
+    </header>
+
+    <section class="flight-section" aria-labelledby="flight-heading">
+      <h2 id="flight-heading">In flight</h2>
+      <figure class="wing-figure">
+        <video
+          controls
+          playsinline
+          preload="none"
+          poster={media('flight_test_poster.webp')}
+          width="1920"
+          height="1080"
+          aria-label="BWB flight test during our summer 2026 data collection"
+        >
+          <source src={media('flight_test.mp4')} type="video/mp4" />
+          <a href={media('flight_test.mp4')}>Watch the flight test video</a>
+        </video>
+        <figcaption>Footage from our flight test during data collection in summer 2026.</figcaption>
+      </figure>
+    </section>
+
+    <section class="build-section" aria-labelledby="composite-heading">
+      <figure class="wing-figure">
+        <a href={media('composite_layup.webp')} target="_blank" rel="noreferrer" aria-label="Open the composite layup photo at full size">
+          <img
+            src={media('composite_layup.webp')}
+            alt="Our team laying up the carbon fiber composite wing skin in the lab"
+            width="1920"
+            height="1920"
+            loading="lazy"
+          />
+        </a>
+        <figcaption>Kenny, Vanessa, Jacquie, and me making the composite wing skin.</figcaption>
+      </figure>
+      <div class="section-copy">
+        <p class="eyebrow">Fabrication</p>
+        <h2 id="composite-heading">Making the wing</h2>
+        <p>
+          I helped design and 3D print the molds used to make the wing. Working
+          alongside Kenny, Vanessa, and Jacquie, I also contributed to the carbon
+          fiber layup for the composite skin.
+        </p>
+      </div>
+    </section>
+
+    <section class="build-section avionics-section" aria-labelledby="avionics-heading">
+      <figure class="wing-figure">
+        <a href={media('avionics_setup.webp')} target="_blank" rel="noreferrer" aria-label="Open the avionics setup photo at full size">
+          <img
+            src={media('avionics_setup.webp')}
+            alt={project.imageAlt}
+            width="1280"
+            height="1280"
+            loading="lazy"
+          />
+        </a>
+        <figcaption>Setting up and testing the wing's avionics in the lab.</figcaption>
+      </figure>
+      <div class="section-copy">
+        <p class="eyebrow">Instrumentation and analysis</p>
+        <h2 id="avionics-heading">From setup to flight data</h2>
+        <p>
+          I helped configure the sensors and controller for flight data collection
+          and worked with the team to test the avionics before flying.
+        </p>
+        <p>
+          After the flights, I worked on analyzing the recorded data for our
+          structural health monitoring study.
+        </p>
+      </div>
+    </section>
+  </article>
+</SiteLayout>
+
+<style>
+  .back-link { margin-bottom: 42px; }
+  .detail-header h1 { max-width: 900px; font-size: clamp(38px, 5.6vw, 62px); line-height: 1.08; }
+  .detail-summary { margin-bottom: 18px; }
+  .intro-copy { max-width: 740px; color: var(--muted); }
+  .flight-section { margin-top: 40px; }
+  .flight-section h2, .section-copy h2 { font-family: Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.025em; line-height: 1.2; }
+  .flight-section h2 { margin-bottom: 18px; font-size: 28px; }
+  .section-copy h2 { margin-bottom: 20px; font-size: clamp(28px, 3.8vw, 36px); }
+  .wing-figure { min-width: 0; margin: 0; }
+  .wing-figure a { display: block; }
+  .wing-figure img, .wing-figure video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
+  .wing-figure video { aspect-ratio: 16 / 9; background: var(--ink); }
+  .wing-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .build-section { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr); gap: clamp(28px, 6vw, 64px); align-items: center; margin-top: clamp(48px, 7vw, 76px); }
+  .section-copy p:not(.eyebrow) { color: var(--muted); }
+  .section-copy p:last-child { margin-bottom: 0; }
+  .avionics-section { padding-top: clamp(36px, 5vw, 56px); border-top: 1px solid var(--line); }
+  @media (max-width: 650px) {
+    .build-section { grid-template-columns: 1fr; gap: 24px; }
+    .section-copy { grid-row: 1; }
+    .build-section .wing-figure { width: 100%; max-width: 480px; }
+  }
+</style>

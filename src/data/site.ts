@@ -116,9 +116,24 @@ export const cessna162G = {
   ],
 };
 
+export const structuralHealthMonitoring = {
+  title: 'Structural Health Monitoring Using In Flight Data',
+  summary:
+    'In summer 2026, we built a composite blended wing body (BWB) wing and collected data in flight. I contributed to mold design and 3D printing, carbon fiber layup, sensor and controller setup, and flight data analysis.',
+  context: 'Summer 2026 · Composite wing and flight testing',
+  image: 'media/structural_health_monitoring/avionics_setup.webp',
+  imageAlt: 'Our composite BWB wing during avionics setup and testing',
+  imageWidth: 1280,
+  imageHeight: 1280,
+  imageUrl: 'projects/structural_health_monitoring/',
+  projectPage: 'projects/structural_health_monitoring/',
+  links: [],
+};
+
 export const projects = [
   nasaBlueSkies,
   uciLiquidRocket,
   cessna162G,
   mae106Rover,
+  structuralHealthMonitoring,
 ];
