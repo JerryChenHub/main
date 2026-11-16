@@ -1,0 +1,90 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { hovercraft as project } from '../../data/site';
+
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+const media = (name: string) => withBase(`media/hovercraft/${name}`);
+---
+
+<SiteLayout title={project.title} description={project.summary} image={project.image}>
+  <article class="detail-page shell hovercraft-project">
+    <a class="back-link" href={withBase('projects/')}>
+      <span aria-hidden="true">←</span> All projects
+    </a>
+
+    <header class="detail-header">
+      <div class="work-meta"><span>{project.context}</span></div>
+      <h1>{project.title}</h1>
+      <p class="detail-summary">From an early prototype to an improved SolidWorks design.</p>
+      <p class="intro-copy">
+        I designed and tested a radio controlled hovercraft, then revisited the design
+        in SolidWorks. The project combines practical testing with the work of fitting
+        the fans, structure, and electronics into one assembly.
+      </p>
+    </header>
+
+    <section class="design-section" aria-labelledby="design-heading">
+      <div class="section-heading compact-heading">
+        <h2 id="design-heading">Improved design</h2>
+      </div>
+      <figure class="hovercraft-figure">
+        <a href={media('improved_design.webp')} target="_blank" rel="noreferrer" aria-label="Open the improved hovercraft rendering at full size">
+          <img
+            src={media('improved_design.webp')}
+            alt={project.imageAlt}
+            width={project.imageWidth}
+            height={project.imageHeight}
+            fetchpriority="high"
+          />
+        </a>
+        <figcaption>SolidWorks rendering of the improved version.</figcaption>
+      </figure>
+    </section>
+
+    <section class="test-section" aria-labelledby="test-heading">
+      <div class="test-copy">
+        <p class="eyebrow">Prototype testing</p>
+        <h2 id="test-heading">The earlier version in motion</h2>
+        <p>This footage records an outdoor test of my earlier hovercraft prototype.</p>
+        <p>
+          My next design goals were to move the center of mass rearward and add a
+          fairing to reduce unwanted rotation.
+        </p>
+      </div>
+      <figure class="hovercraft-figure test-video">
+        <video
+          controls
+          playsinline
+          preload="none"
+          poster={media('test_video_poster.webp')}
+          width="1280"
+          height="720"
+          aria-label="Test of the earlier RC hovercraft prototype"
+        >
+          <source src={media('test_video.mp4')} type="video/mp4" />
+          <a href={media('test_video.mp4')}>Watch the hovercraft test video</a>
+        </video>
+        <figcaption>Early prototype test, recorded before the improved CAD version.</figcaption>
+      </figure>
+    </section>
+  </article>
+</SiteLayout>
+
+<style>
+  .back-link { margin-bottom: 42px; }
+  .detail-summary { max-width: 760px; margin-bottom: 18px; }
+  .intro-copy { max-width: 720px; color: var(--muted); }
+  .design-section { margin-top: 38px; }
+  .compact-heading { margin-bottom: 20px; }
+  .section-heading h2, .test-copy h2 { font-family: Georgia, 'Times New Roman', serif; font-size: clamp(28px, 3.8vw, 36px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.2; }
+  .hovercraft-figure { min-width: 0; margin: 0; }
+  .hovercraft-figure a { display: block; }
+  .hovercraft-figure img, .hovercraft-figure video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; }
+  .hovercraft-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .test-section { margin-top: clamp(44px, 6vw, 68px); padding-top: clamp(32px, 4vw, 48px); border-top: 1px solid var(--line); }
+  .test-copy { max-width: 720px; }
+  .test-copy h2 { margin-bottom: 20px; }
+  .test-copy p:not(.eyebrow) { color: var(--muted); }
+  .test-video { margin-top: 28px; }
+  .test-video video { background: var(--ink); }
+</style>

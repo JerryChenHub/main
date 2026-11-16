@@ -130,10 +130,25 @@ export const structuralHealthMonitoring = {
   links: [],
 };
 
+export const hovercraft = {
+  title: 'RC Hovercraft',
+  summary:
+    'I tested an early hovercraft prototype and developed an improved design in SolidWorks, working through the layout of the fans, structure, and onboard electronics.',
+  context: 'Personal project · SolidWorks and prototyping',
+  image: 'media/hovercraft/improved_design.webp',
+  imageAlt: 'SolidWorks rendering of the improved hovercraft with its lift fan, rear propulsion fan, and onboard electronics',
+  imageWidth: 2000,
+  imageHeight: 1375,
+  imageUrl: 'projects/hovercraft/',
+  projectPage: 'projects/hovercraft/',
+  links: [],
+};
+
 export const projects = [
   nasaBlueSkies,
   uciLiquidRocket,
   cessna162G,
   mae106Rover,
   structuralHealthMonitoring,
+  hovercraft,
 ];
