@@ -30,7 +30,7 @@ export const profile = {
     ],
     [{ text: 'I am a student pilot and I play piano.' }],
   ],
-  portrait: 'media/jingcao.webp',
+  portrait: 'media/homepage_portrait.jpg',
   portraitAlt: 'Boyang Chen portrait',
   updated: '13 March 2026',
 };
