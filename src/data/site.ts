@@ -160,7 +160,7 @@ export const bluetoothSpeaker = {
 export const humanPoweredAirplane = {
   title: 'Human Powered Airplane',
   summary:
-    'I restarted UCI\'s human powered airplane project with my advisor and lead our team of seven. My work covers aircraft design, aerodynamic and propeller studies, CAD integration, and the drivetrain.',
+    'My advisor and I restarted UCI\'s human powered airplane project after years of inactivity. I lead our team of seven and work on the aircraft design, aerodynamic calculations, drivetrain, and gearbox.',
   context: 'UC Irvine · Team Lead · Ongoing',
   image: 'media/hpa/aircraft_detail.webp',
   imageAlt: 'CAD view of our human powered airplane showing the wing structure, propeller, and drivetrain',

@@ -53,19 +53,19 @@ const historicalPhotos = [
     <header class="detail-header">
       <div class="work-meta"><span>{humanPoweredAirplane.context}</span></div>
       <h1>Human Powered Airplane</h1>
-      <p class="detail-summary">Restarting UCI's human powered airplane project.</p>
+      <p class="detail-summary">Restarting UCI's human powered airplane project with my advisor.</p>
     </header>
 
     <div class="overview">
       <div class="overview-copy">
         <p>
           My advisor, <strong>Jacqueline Huynh</strong> (formerly Jacqueline Thomas), restarted UCI's Human Powered
-          Airplane project in 2011. After years of inactivity, I restarted the project
-          with her. We are now a team of seven, including me, working on a new aircraft design.
+          Airplane project in 2011. The project had been inactive for years, and now
+          I am restarting it with her.
         </p>
         <p>
-          I lead the team and the overall aircraft design, connecting the aerodynamic
-          studies, mechanical design, and CAD assembly as the project develops.
+          We have six other members on the team, seven including me. I am the team
+          lead and am responsible for the overall aircraft design.
         </p>
         <a class="text-link" href="#earlier-team">The earlier UCI team</a>
       </div>
@@ -77,55 +77,53 @@ const historicalPhotos = [
       </figure>
     </div>
 
-    <dl class="design-facts" aria-label="Current team and aircraft design">
-      <div><dt>Team members</dt><dd>7</dd></div>
-      <div><dt>Wingspan</dt><dd>28 <span>m</span></dd></div>
-      <div><dt>Wing area</dt><dd>40 <span>m²</span></dd></div>
-    </dl>
-
     <section class="hpa-section" aria-labelledby="team-heading">
       <div class="section-copy">
-        <h2 id="team-heading">Leading the team</h2>
+        <h2 id="team-heading">My role on the team</h2>
         <p>
-          As team lead, I coordinate the project, assign tasks, and integrate my
-          teammates' CAD models into the aircraft assembly. I also lead fundraising
-          and work with my advisor to keep the team's work moving toward a complete design.
+          I coordinate the project, assign tasks, and integrate my teammates' CAD
+          models into the aircraft assembly. I also handle fundraising. Alongside
+          this, I work on the aerodynamic design, drivetrain, gearbox, and airframe structure.
         </p>
       </div>
       <figure class="hpa-figure team-photo">
         <img src={media('current_team.webp')} alt="Our current Human Powered Airplane team, with all seven members standing together" width="1822" height="964" loading="lazy" />
-        <figcaption>Our current team of seven.</figcaption>
+        <figcaption>Our current team.</figcaption>
       </figure>
     </section>
 
     <section class="hpa-section" aria-labelledby="aerodynamics-heading">
       <div class="section-copy">
-        <h2 id="aerodynamics-heading">Turning aerodynamic data into a design</h2>
+        <h2 id="aerodynamics-heading">Choosing the aircraft parameters</h2>
         <p>
-          I use XFOIL to prepare aerodynamic data for different airfoils and compare
-          wing configurations across a range of spans and areas. I use XROTOR to
-          optimize the propeller and reduce induced losses.
+          Early in the design, I used XFOIL to calculate aerodynamic data for different
+          airfoils and compare wing designs across a range of spans and areas. I used
+          XROTOR to optimize the propeller and reduce its induced losses.
         </p>
         <p>
-          I brought these results together in an online design database to help narrow
-          the aircraft's initial parameter ranges. The data on the site are precomputed
-          with XFOIL and XROTOR, so I can compare options quickly during early design.
+          I put these results into an online database to help us narrow down the
+          aircraft's main parameters. All the data on the site are precomputed with
+          XFOIL and XROTOR, so we can compare designs without running each calculation again.
         </p>
         <div class="link-row database-link">
           <a href="https://hpaxfoil.jerryc.link/Xfoil/" target="_blank" rel="noreferrer">Explore the aircraft design database</a>
         </div>
         <p>
-          This database helped me make the early design decisions. I selected a <strong>28 m wingspan</strong> and <strong>40 m² wing area</strong> for the
-          current aircraft, and optimized the wing's chord and twist distributions
-          using aerodynamic data from XFOIL.
+          This helped a lot with the early decisions. I chose a <strong>28 m wingspan</strong> and <strong>40 m² wing area</strong>, and used the XFOIL data
+          to optimize the chord and twist distributions along the wing.
         </p>
       </div>
-      <figure class="hpa-figure xfoil-slot" data-image-slot="hpa-xfoil-running">
-        <div class="screenshot-placeholder" role="img" aria-label="Reserved space for an XFOIL calculation screenshot">
-          <span>XFOIL</span>
-          <p>Calculation screenshot to come</p>
-        </div>
-        <figcaption>XFOIL calculations used to build the aerodynamic database.</figcaption>
+      <figure class="hpa-figure analysis-figure">
+        <a href={media('xfoil_airfoil.jpg')} target="_blank" rel="noreferrer" aria-label="Open the DAE31 airfoil calculation at full size">
+          <img src={media('xfoil_airfoil.jpg')} alt="XFOIL pressure distribution and geometry for the DAE31 airfoil at a Reynolds number of 600000 and an angle of attack of 4 degrees" width="1657" height="1326" loading="lazy" />
+        </a>
+        <figcaption>A DAE31 airfoil calculation in XFOIL, showing the pressure distribution and aerodynamic coefficients.</figcaption>
+      </figure>
+      <figure class="hpa-figure analysis-figure">
+        <a href={media('xfoil_terminal.jpg')} target="_blank" rel="noreferrer" aria-label="Open the XFOIL calculation terminal at full size">
+          <img src={media('xfoil_terminal.jpg')} alt="XFOIL terminal showing the DAE31 calculation converging and saving a point to the polar data file" width="980" height="511" loading="lazy" />
+        </a>
+        <figcaption>The calculation converging and saving its results to a polar file for the database.</figcaption>
       </figure>
     </section>
 
@@ -133,11 +131,19 @@ const historicalPhotos = [
       <div class="section-copy">
         <h2 id="mechanical-heading">Drivetrain and gearbox</h2>
         <p>
-          I design and model the drivetrain and gearbox, and prepare the engineering
-          drawings. This work connects the pedal input to the propeller within the
-          overall aircraft layout.
+          I also design and model the drivetrain and gearbox, and prepare the
+          engineering drawings. I laid out the drivetrain to carry pedal power through
+          a chain, two 1:1 bevel gearboxes, and a vertical shaft to the propeller.
+          I account for the efficiency of each stage and the propeller when estimating
+          how much power the pilot needs to supply.
         </p>
       </div>
+      <figure class="hpa-figure analysis-figure" data-source-figure="1">
+        <a href={media('drivetrain_layout.webp')} target="_blank" rel="noreferrer" aria-label="Open the drivetrain layout at full size">
+          <img src={media('drivetrain_layout.webp')} alt="Drivetrain diagram tracing pedal power through the chain, lower gearbox, vertical shaft, upper gearbox, and propeller" width="2280" height="1824" loading="lazy" />
+        </a>
+        <figcaption>The drivetrain layout and the power path from the pedals to the propeller.</figcaption>
+      </figure>
       <div class="drawing-grid">
         <figure class="hpa-figure">
           <a href={media('gearbox_section_aa.png')} target="_blank" rel="noreferrer" aria-label="Open the gearbox section drawing at full size">
@@ -152,16 +158,57 @@ const historicalPhotos = [
           <figcaption>Exploded view of the gearbox assembly.</figcaption>
         </figure>
       </div>
+      <div class="section-copy technical-note">
+        <p>
+          I checked the 7075 T6 aluminum upper gearbox housing in ANSYS under a
+          1000 N downward load at the tail tube connection. The model gave a peak
+          unaveraged von Mises stress of 143.9 MPa and a maximum displacement of
+          0.299 mm. I use this analysis to check the housing's strength and stiffness.
+        </p>
+      </div>
+      <figure class="hpa-figure stress-figure" data-source-figure="24">
+        <a href={media('gearbox_stress.webp')} target="_blank" rel="noreferrer" aria-label="Open the gearbox housing stress analysis at full size">
+          <img src={media('gearbox_stress.webp')} alt="ANSYS von Mises stress distribution in the upper gearbox housing under a 1000 N load, with a color scale from 0 to 143.9 MPa" width="2120" height="2170" loading="lazy" />
+        </a>
+        <figcaption>Upper gearbox housing stress under the 1000 N simulation load.</figcaption>
+      </figure>
+      <div class="photo-slots">
+        <figure class="hpa-figure" data-image-slot="hpa-gearbox-assembly-photo">
+          <div class="photo-placeholder" role="img" aria-label="Reserved space for a photo of the physical gearbox assembly">
+            <span>Gearbox assembly</span>
+            <p>Photo coming soon</p>
+          </div>
+        </figure>
+        <figure class="hpa-figure" data-image-slot="hpa-gearbox-detail-photo">
+          <div class="photo-placeholder" role="img" aria-label="Reserved space for a detail photo of the physical gearbox">
+            <span>Gearbox detail</span>
+            <p>Photo coming soon</p>
+          </div>
+        </figure>
+      </div>
     </section>
 
     <section class="hpa-section" aria-labelledby="structure-heading">
       <div class="section-copy">
-        <h2 id="structure-heading">Bringing the aircraft together</h2>
+        <h2 id="structure-heading">Airframe structure</h2>
         <p>
-          Alongside the aerodynamic and mechanical work, I analyze and refine the
-          airframe structure to meet its strength requirements. Integrating the team's
-          CAD models lets me bring the wing, frame, propeller, and drivetrain together
-          in one aircraft assembly.
+          I use this frame layout to track how the pilot, wing, and tail loads pass
+          through the tubes, cables, and connections. I compare aluminum and carbon
+          tube sizes against bending, buckling, and deflection limits to reduce weight
+          while meeting the load requirements.
+        </p>
+      </div>
+      <figure class="hpa-figure" data-source-figure="8">
+        <a href={media('frame_layout.webp')} target="_blank" rel="noreferrer" aria-label="Open the cabin frame layout at full size">
+          <img src={media('frame_layout.webp')} alt="Side view of the cabin frame with labeled tubes, kingposts, cables, and connection nodes" width="2360" height="1330" loading="lazy" />
+        </a>
+        <figcaption>The cabin frame layout used in the structural calculations. The diagram is not to scale.</figcaption>
+      </figure>
+      <div class="section-copy technical-note">
+        <p>
+          I bring my teammates' CAD into the full aircraft assembly to check how the
+          wing, frame, propeller, and drivetrain fit together, and update the design
+          as the individual parts develop.
         </p>
       </div>
       <figure class="hpa-figure">
@@ -177,10 +224,9 @@ const historicalPhotos = [
         <p class="eyebrow">Project history</p>
         <h2 id="history-heading">The earlier UCI team</h2>
         <p>
-          The project that Jacqueline restarted in 2011 brought together several
-          generations of UCI students. In 2016, the team tested an electric,
-          remotely controlled version of its aircraft at El Mirage.
-          These photographs capture the people and work behind that earlier effort.
+          These are photos from the earlier UCI team. In 2016, they tested an electric,
+          remotely controlled version of the aircraft at El Mirage. This is the
+          project my advisor worked on before we restarted it together.
         </p>
       </div>
       <div class="history-grid">
@@ -217,22 +263,21 @@ const historicalPhotos = [
   .aircraft-overview { margin: 0; }
   .aircraft-overview img { border-color: transparent; }
   .aircraft-overview figcaption { text-align: center; }
-  .design-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 30px 0 0; padding: 22px 0; border-block: 1px solid var(--line); }
-  .design-facts dt { color: var(--muted); font-size: 14px; }
-  .design-facts dd { margin: 4px 0 0; font-family: Georgia, 'Times New Roman', serif; font-size: 36px; line-height: 1.2; }
-  .design-facts dd span { font-size: 24px; }
   .hpa-section { margin-top: clamp(48px, 7vw, 76px); }
   .section-copy { max-width: 740px; }
   .section-copy h2 { margin-bottom: 18px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(28px, 3.8vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; }
   .section-copy p:last-child { margin-bottom: 0; }
   .team-photo { max-width: 900px; }
+  .analysis-figure { max-width: 840px; }
+  .stress-figure { max-width: 640px; }
+  .technical-note { margin-top: 32px; }
   .database-link { margin: 22px 0; }
   .database-link a { font-size: 16px; }
-  .screenshot-placeholder { min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; border: 1px solid var(--line); border-radius: 3px; background: var(--accent-soft); text-align: center; }
-  .screenshot-placeholder span { color: var(--accent); font-size: 20px; font-weight: 650; letter-spacing: 0.08em; }
-  .screenshot-placeholder p { margin: 10px 0 0; color: var(--muted); }
-  .drawing-grid, .history-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
-  .drawing-grid .hpa-figure, .history-grid .hpa-figure { margin: 0; }
+  .photo-placeholder { min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; border: 1px solid var(--line); border-radius: 3px; background: white; text-align: center; }
+  .photo-placeholder span { color: var(--ink); font-size: 16px; }
+  .photo-placeholder p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+  .drawing-grid, .history-grid, .photo-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
+  .drawing-grid .hpa-figure, .history-grid .hpa-figure, .photo-slots .hpa-figure { margin: 0; }
   .drawing-grid img { height: 350px; object-fit: contain; padding: 12px; }
   .history-section { border-top: 1px solid var(--line); padding-top: clamp(40px, 6vw, 60px); }
   .history-grid img { aspect-ratio: 3 / 2; object-fit: cover; }
@@ -241,12 +286,9 @@ const historicalPhotos = [
   @media (max-width: 720px) {
     .overview { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
     .aircraft-overview { width: min(100%, 460px); margin-inline: auto; }
-    .design-facts { gap: 12px; }
-    .design-facts dd { font-size: 30px; }
-    .design-facts dd span { font-size: 21px; }
-    .drawing-grid, .history-grid { grid-template-columns: 1fr; gap: 28px; }
+    .drawing-grid, .history-grid, .photo-slots { grid-template-columns: 1fr; gap: 28px; }
     .drawing-grid img { height: auto; max-height: 600px; padding: 10px; }
     .history-grid { max-width: 560px; }
-    .screenshot-placeholder { min-height: 200px; }
+    .photo-placeholder { min-height: 200px; }
   }
 </style>
