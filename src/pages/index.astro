@@ -5,7 +5,9 @@ import MentorshipCard from '../components/MentorshipCard.astro';
 import ProjectRow from '../components/ProjectRow.astro';
 import { profile, projects, socialLinks } from '../data/site';
 
-const research = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+const research = (await getCollection('research'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 2);
 const mentorship = (await getCollection('mentorship', ({ data }) => data.featured))
   .sort((a, b) => a.data.order - b.data.order)
   .slice(0, 2);
