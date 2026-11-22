@@ -1,0 +1,252 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { humanPoweredAirplane } from '../../data/site';
+
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+const media = (name: string) => withBase(`media/hpa/${name}`);
+const historySource = 'https://engineering.uci.edu/documents/news-archive/2016/september/human-powered-airplane-team-learns-lessons-flight-test.php';
+const teamSource = 'https://engineering.uci.edu/news/2023/august/revolutionary-plane-coming-soon.php';
+const historicalPhotos = [
+  {
+    image: 'history_2014_team.webp',
+    alt: 'The earlier UCI Human Powered Airplane team with Robert Liebeck beside a wing in 2014',
+    caption: 'The earlier team with Robert Liebeck in 2014. Jacqueline is second from the left.',
+    credit: 'Steve Zylius / UCI',
+    source: teamSource,
+    width: 600,
+    height: 394,
+  },
+  {
+    image: 'history_2016_team.webp',
+    alt: 'The UCI team gathered in front of their aircraft at El Mirage in 2016',
+    caption: 'The team at El Mirage in 2016.',
+    credit: 'UCI Samueli School of Engineering',
+    source: historySource,
+    width: 450,
+    height: 300,
+  },
+  {
+    image: 'history_2016_night.webp',
+    alt: 'Students assembling the original aircraft at night before its 2016 test',
+    caption: 'Assembling the aircraft through the night before testing.',
+    credit: 'UCI Samueli School of Engineering',
+    source: historySource,
+    width: 2000,
+    height: 1335,
+  },
+  {
+    image: 'history_2016_wing.webp',
+    alt: 'Emiko Soroka standing under the long wing as the earlier team prepares for testing at sunrise',
+    caption: 'Under the wing as the team prepared for testing at sunrise.',
+    credit: 'UCI Samueli School of Engineering',
+    source: historySource,
+    width: 1800,
+    height: 1201,
+  },
+];
+---
+
+<SiteLayout title={humanPoweredAirplane.title} description={humanPoweredAirplane.summary} image={humanPoweredAirplane.image}>
+  <article class="detail-page shell hpa-project">
+    <a class="back-link" href={withBase('#projects')}>All projects</a>
+
+    <header class="detail-header">
+      <div class="work-meta"><span>{humanPoweredAirplane.context}</span></div>
+      <h1>Human Powered Airplane</h1>
+      <p class="detail-summary">Restarting UCI's human powered airplane project.</p>
+    </header>
+
+    <div class="overview">
+      <div class="overview-copy">
+        <p>
+          My advisor, <strong>Jacqueline Thomas</strong>, restarted UCI's Human Powered
+          Airplane project in 2011. After years of inactivity, I restarted the project
+          with her. We are now a team of seven, including me, working on a new aircraft design.
+        </p>
+        <p>
+          I lead the team and the overall aircraft design, connecting the aerodynamic
+          studies, mechanical design, and CAD assembly as the project develops.
+        </p>
+        <a class="text-link" href="#earlier-team">The earlier UCI team</a>
+      </div>
+      <figure class="hpa-figure aircraft-overview">
+        <a href={media('aircraft_overall.webp')} target="_blank" rel="noreferrer" aria-label="Open the full aircraft CAD view">
+          <img src={media('aircraft_overall.webp')} alt="Overall CAD assembly of our current human powered airplane design, with a long wing, suspended frame, and tail" width="2000" height="1971" fetchpriority="high" />
+        </a>
+        <figcaption>Our current aircraft design.</figcaption>
+      </figure>
+    </div>
+
+    <dl class="design-facts" aria-label="Current team and aircraft design">
+      <div><dt>Team members</dt><dd>7</dd></div>
+      <div><dt>Wingspan</dt><dd>28 <span>m</span></dd></div>
+      <div><dt>Wing area</dt><dd>40 <span>m²</span></dd></div>
+    </dl>
+
+    <section class="hpa-section" aria-labelledby="team-heading">
+      <div class="section-copy">
+        <h2 id="team-heading">Leading the team</h2>
+        <p>
+          As team lead, I coordinate the project, assign tasks, and integrate my
+          teammates' CAD models into the aircraft assembly. I also lead fundraising
+          and work with my advisor to keep the team's work moving toward a complete design.
+        </p>
+      </div>
+      <figure class="hpa-figure team-photo">
+        <img src={media('current_team.webp')} alt="Our current Human Powered Airplane team, with all seven members standing together" width="1822" height="964" loading="lazy" />
+        <figcaption>Our current team of seven.</figcaption>
+      </figure>
+    </section>
+
+    <section class="hpa-section" aria-labelledby="aerodynamics-heading">
+      <div class="section-copy">
+        <h2 id="aerodynamics-heading">Turning aerodynamic data into a design</h2>
+        <p>
+          I use XFOIL to prepare aerodynamic data for different airfoils and compare
+          wing configurations across a range of spans and areas. I use XROTOR to
+          optimize the propeller and reduce induced losses.
+        </p>
+        <p>
+          I brought these results together in an online design database to help narrow
+          the aircraft's initial parameter ranges. The data on the site are precomputed
+          with XFOIL and XROTOR, so I can compare options quickly during early design.
+        </p>
+        <div class="link-row database-link">
+          <a href="https://hpaxfoil.jerryc.link/Xfoil/" target="_blank" rel="noreferrer">Explore the aircraft design database</a>
+        </div>
+        <p>
+          This database helped me make the early design decisions. I selected a <strong>28 m wingspan</strong> and <strong>40 m² wing area</strong> for the
+          current aircraft, and optimized the wing's chord and twist distributions
+          using aerodynamic data from XFOIL.
+        </p>
+      </div>
+      <figure class="hpa-figure xfoil-slot" data-image-slot="hpa-xfoil-running">
+        <div class="screenshot-placeholder" role="img" aria-label="Reserved space for an XFOIL calculation screenshot">
+          <span>XFOIL</span>
+          <p>Calculation screenshot to come</p>
+        </div>
+        <figcaption>XFOIL calculations used to build the aerodynamic database.</figcaption>
+      </figure>
+    </section>
+
+    <section class="hpa-section" aria-labelledby="mechanical-heading">
+      <div class="section-copy">
+        <h2 id="mechanical-heading">Drivetrain and gearbox</h2>
+        <p>
+          I design and model the drivetrain and gearbox, and prepare the engineering
+          drawings. This work connects the pedal input to the propeller within the
+          overall aircraft layout.
+        </p>
+      </div>
+      <div class="drawing-grid">
+        <figure class="hpa-figure">
+          <a href={media('gearbox_section_aa.png')} target="_blank" rel="noreferrer" aria-label="Open the gearbox section drawing at full size">
+            <img src={media('gearbox_section_aa.webp')} alt="Section drawing showing the gearbox shafts, bevel gears, and bearing arrangement" width="2340" height="1585" loading="lazy" />
+          </a>
+          <figcaption>Gearbox section and bearing arrangement.</figcaption>
+        </figure>
+        <figure class="hpa-figure">
+          <a href={media('gearbox_exploded.png')} target="_blank" rel="noreferrer" aria-label="Open the exploded gearbox assembly at full size">
+            <img src={media('gearbox_exploded.webp')} alt="Exploded gearbox assembly showing the housing, shafts, gears, bearings, and fastening components" width="2340" height="1410" loading="lazy" />
+          </a>
+          <figcaption>Exploded view of the gearbox assembly.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="hpa-section" aria-labelledby="structure-heading">
+      <div class="section-copy">
+        <h2 id="structure-heading">Bringing the aircraft together</h2>
+        <p>
+          Alongside the aerodynamic and mechanical work, I analyze and refine the
+          airframe structure to meet its strength requirements. Integrating the team's
+          CAD models lets me bring the wing, frame, propeller, and drivetrain together
+          in one aircraft assembly.
+        </p>
+      </div>
+      <figure class="hpa-figure">
+        <a href={media('aircraft_detail.webp')} target="_blank" rel="noreferrer" aria-label="Open the aircraft structure and drivetrain CAD detail">
+          <img src={media('aircraft_detail.webp')} alt="Detailed CAD view of the wing ribs and spars above the suspended frame, propeller, and pedal drivetrain" width="2400" height="1337" loading="lazy" />
+        </a>
+        <figcaption>The wing structure, frame, and drivetrain in our current CAD assembly.</figcaption>
+      </figure>
+    </section>
+
+    <section class="hpa-section history-section" id="earlier-team" aria-labelledby="history-heading">
+      <div class="section-copy">
+        <p class="eyebrow">Project history</p>
+        <h2 id="history-heading">The earlier UCI team</h2>
+        <p>
+          The project that Jacqueline restarted in 2011 brought together several
+          generations of UCI students. In 2016, the team tested an electric,
+          remotely controlled version of its aircraft at El Mirage.
+          These photographs capture the people and work behind that earlier effort.
+        </p>
+      </div>
+      <div class="history-grid">
+        {historicalPhotos.map((photo) => (
+          <figure class="hpa-figure">
+            <a href={media(photo.image)} target="_blank" rel="noreferrer" aria-label={`Open ${photo.caption}`}>
+              <img src={media(photo.image)} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" />
+            </a>
+            <figcaption>
+              {photo.caption}
+              <span class="photo-credit"><a href={photo.source} target="_blank" rel="noreferrer">{photo.credit}</a></span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  </article>
+</SiteLayout>
+
+<style>
+  .back-link { margin-bottom: 38px; font-size: 14px; }
+  .work-meta, .eyebrow { font-size: 14px; }
+  .detail-header { max-width: none; }
+  .detail-header h1 { font-size: clamp(42px, 6.1vw, 66px); }
+  .detail-summary { margin-bottom: 0; }
+  .overview { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(28px, 5vw, 58px); margin-top: 28px; }
+  .overview-copy p, .section-copy p { color: var(--muted); }
+  .overview-copy strong { color: var(--ink); }
+  .overview-copy .text-link { display: inline-block; margin-top: 4px; }
+  .hpa-figure { min-width: 0; margin: 26px 0 0; }
+  .hpa-figure > a { display: block; }
+  .hpa-figure img { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 3px; background: white; }
+  .hpa-figure figcaption { margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .aircraft-overview { margin: 0; }
+  .aircraft-overview img { border-color: transparent; }
+  .aircraft-overview figcaption { text-align: center; }
+  .design-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 30px 0 0; padding: 22px 0; border-block: 1px solid var(--line); }
+  .design-facts dt { color: var(--muted); font-size: 14px; }
+  .design-facts dd { margin: 4px 0 0; font-family: Georgia, 'Times New Roman', serif; font-size: 36px; line-height: 1.2; }
+  .design-facts dd span { font-size: 24px; }
+  .hpa-section { margin-top: clamp(48px, 7vw, 76px); }
+  .section-copy { max-width: 740px; }
+  .section-copy h2 { margin-bottom: 18px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(28px, 3.8vw, 36px); font-weight: 500; line-height: 1.2; letter-spacing: -0.025em; }
+  .section-copy p:last-child { margin-bottom: 0; }
+  .team-photo { max-width: 900px; }
+  .database-link { margin: 22px 0; }
+  .database-link a { font-size: 16px; }
+  .screenshot-placeholder { min-height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px; border: 1px solid var(--line); border-radius: 3px; background: var(--accent-soft); text-align: center; }
+  .screenshot-placeholder span { color: var(--accent); font-size: 20px; font-weight: 650; letter-spacing: 0.08em; }
+  .screenshot-placeholder p { margin: 10px 0 0; color: var(--muted); }
+  .drawing-grid, .history-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
+  .drawing-grid .hpa-figure, .history-grid .hpa-figure { margin: 0; }
+  .drawing-grid img { height: 350px; object-fit: contain; padding: 12px; }
+  .history-section { border-top: 1px solid var(--line); padding-top: clamp(40px, 6vw, 60px); }
+  .history-grid img { aspect-ratio: 3 / 2; object-fit: cover; }
+  .photo-credit { display: block; margin-top: 6px; font-size: 13px; }
+  .photo-credit a { color: var(--accent); }
+  @media (max-width: 720px) {
+    .overview { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
+    .aircraft-overview { width: min(100%, 460px); margin-inline: auto; }
+    .design-facts { gap: 12px; }
+    .design-facts dd { font-size: 30px; }
+    .design-facts dd span { font-size: 21px; }
+    .drawing-grid, .history-grid { grid-template-columns: 1fr; gap: 28px; }
+    .drawing-grid img { height: auto; max-height: 600px; padding: 10px; }
+    .history-grid { max-width: 560px; }
+    .screenshot-placeholder { min-height: 200px; }
+  }
+</style>

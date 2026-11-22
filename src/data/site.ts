@@ -157,7 +157,24 @@ export const bluetoothSpeaker = {
   links: [],
 };
 
+export const humanPoweredAirplane = {
+  title: 'Human Powered Airplane',
+  summary:
+    'I restarted UCI\'s human powered airplane project with my advisor and lead our team of seven. My work covers aircraft design, aerodynamic and propeller studies, CAD integration, and the drivetrain.',
+  context: 'UC Irvine · Team Lead · Ongoing',
+  image: 'media/hpa/aircraft_detail.webp',
+  imageAlt: 'CAD view of our human powered airplane showing the wing structure, propeller, and drivetrain',
+  imageWidth: 2400,
+  imageHeight: 1337,
+  imageUrl: 'projects/human_powered_airplane/',
+  projectPage: 'projects/human_powered_airplane/',
+  links: [
+    { label: 'Design Database', url: 'https://hpaxfoil.jerryc.link/Xfoil/' },
+  ],
+};
+
 export const projects = [
+  humanPoweredAirplane,
   nasaBlueSkies,
   uciLiquidRocket,
   cessna162G,
