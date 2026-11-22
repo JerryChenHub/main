@@ -81,6 +81,22 @@ const DetailImageWrapper = entry.data.detailImageLink ? 'a' : 'div';
       <Content />
     </div>
 
+    {entry.data.architecture.length > 0 && (
+      <section class="research-architecture" aria-labelledby="architecture-heading">
+        <h2 id="architecture-heading" class="media-heading">Network architecture</h2>
+        <div class="architecture-grid">
+          {entry.data.architecture.map((diagram) => (
+            <figure>
+              <a href={withBase(diagram.image)} target="_blank" rel="noreferrer" aria-label={`Open ${diagram.title} at full size`}>
+                <img src={withBase(diagram.image)} alt={diagram.alt} width={diagram.width} height={diagram.height} loading="lazy" />
+              </a>
+              <figcaption>{diagram.title}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
     {
       entry.data.detailImage && (
         <figure class="detail-figure">
@@ -126,17 +142,26 @@ const DetailImageWrapper = entry.data.detailImageLink ? 'a' : 'div';
 <style>
   .detail-media a,
   .detail-figure a,
+  .research-architecture a,
   .research-gallery a { display: block; }
   .detail-media figcaption { padding: 14px 18px; background: white; }
   .detail-media figcaption,
+  .research-architecture figcaption,
   .research-gallery figcaption { color: var(--muted); font-size: 13px; line-height: 1.55; }
   .media-heading { margin: 0 0 20px; font-size: 20px; line-height: 1.4; }
+  .research-architecture,
   .research-gallery { margin-top: clamp(42px, 7vw, 72px); }
+  .architecture-grid,
   .gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+  .architecture-grid { align-items: start; }
+  .architecture-grid figure,
   .gallery-grid figure { margin: 0; }
+  .architecture-grid img,
   .gallery-grid img { width: 100%; height: auto; border-radius: 3px; }
+  .architecture-grid figcaption,
   .gallery-grid figcaption { margin-top: 12px; }
   @media (max-width: 640px) {
+    .architecture-grid,
     .gallery-grid { grid-template-columns: 1fr; }
   }
 </style>

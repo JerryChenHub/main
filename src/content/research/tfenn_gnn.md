@@ -12,6 +12,17 @@ imageAlt: "My TFENN benchmark comparing force test MAE and training time per epo
 imageFit: "contain"
 imageLink: "reports/tfenn_gnn/force_benchmark.pdf"
 imageCaption: "My independent TFENN research: test MAE and mean training time per epoch. Labels show trainable parameter counts."
+architecture:
+  - image: "media/tfenn_gnn/full_network.png"
+    alt: "Overall TFENN graph neural network architecture"
+    title: "Overall network"
+    width: 1093
+    height: 1352
+  - image: "media/tfenn_gnn/message_block.png"
+    alt: "TFENN message block architecture"
+    title: "Message block"
+    width: 1600
+    height: 2264
 detailImage: "media/tfenn_gnn/early_urop_poster.webp"
 detailImageAlt: "Early UROP poster titled Tensor Feature Equivariant Neural Networks for Benzene Molecules"
 detailImageHeading: "Early poster with Kevin"

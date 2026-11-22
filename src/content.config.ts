@@ -25,6 +25,13 @@ const research = defineCollection({
     imageFit: z.enum(['cover', 'contain']).optional(),
     imageLink: linkSchema.shape.url.optional(),
     imageCaption: z.string().optional(),
+    architecture: z.array(z.object({
+      image: z.string(),
+      alt: z.string(),
+      title: z.string(),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+    })).default([]),
     detailImage: z.string().optional(),
     detailImageAlt: z.string().optional(),
     detailImageCaption: z.string().optional(),
