@@ -4,7 +4,7 @@ shortTitle: "TFENN in a GNN Framework"
 summary: "I am exploring whether tensor featured neurons in a graph neural network can improve force prediction in coarse grained molecular dynamics."
 authors:
   - Boyang Chen
-venue: "Independent research · Computational Mechanics Laboratory"
+venue: "Computational Mechanics Laboratory"
 year: 2026
 order: 1
 image: "media/tfenn_gnn/force_benchmark.png"
