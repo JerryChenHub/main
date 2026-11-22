@@ -25,7 +25,7 @@ architecture:
     height: 2264
 detailImage: "media/tfenn_gnn/early_urop_poster.webp"
 detailImageAlt: "Early UROP poster titled Tensor Feature Equivariant Neural Networks for Benzene Molecules"
-detailImageHeading: "Early poster with Kevin"
+detailImageHeading: "Early poster with Kevin and Victory"
 detailImageCaption: "Early work with Kevin that started my later exploration. Poster by Boyang Chen, Kevin Garanger, Victory Ogbonnaya, and Julian Rimoli."
 detailImageLink: "reports/tfenn_gnn/early_urop_poster.pdf"
 detailImageWidth: 2200
