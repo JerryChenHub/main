@@ -37,8 +37,8 @@ export const profile = {
 
 export const socialLinks = [
   { label: 'Email', url: 'mailto:boyangc4@uci.edu' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/jjingcao/' },
-  { label: 'GitHub', url: 'https://github.com/jca0' },
+  { label: 'LinkedIn', url: 'https://www.linkedin.com/in/7871jka293/' },
+  { label: 'GitHub', url: 'https://github.com/JerryChenHub' },
   { label: 'Scholar', url: 'https://scholar.google.com/' },
 ];
 
