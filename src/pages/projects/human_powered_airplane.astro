@@ -175,17 +175,17 @@ const historicalPhotos = [
         <figcaption>Upper gearbox housing stress under the 1000 N simulation load.</figcaption>
       </figure>
       <div class="photo-slots">
-        <figure class="hpa-figure" data-image-slot="hpa-gearbox-assembly-photo">
-          <div class="photo-placeholder" role="img" aria-label="Reserved space for a photo of the physical gearbox assembly">
-            <span>Gearbox assembly</span>
-            <p>Photo coming soon</p>
-          </div>
+        <figure class="hpa-figure">
+          <a href={media('gearbox_housing_photo.jpg')} target="_blank" rel="noreferrer" aria-label="Open the gearbox housing photo at full size">
+            <img src={media('gearbox_housing_photo.jpg')} alt="Physical gearbox housing with a large circular bearing opening and open side walls" width="810" height="1440" loading="lazy" />
+          </a>
+          <figcaption>Gearbox housing.</figcaption>
         </figure>
-        <figure class="hpa-figure" data-image-slot="hpa-gearbox-detail-photo">
-          <div class="photo-placeholder" role="img" aria-label="Reserved space for a detail photo of the physical gearbox">
-            <span>Gearbox detail</span>
-            <p>Photo coming soon</p>
-          </div>
+        <figure class="hpa-figure">
+          <a href={media('bearing_housing_photo.jpg')} target="_blank" rel="noreferrer" aria-label="Open the bearing housing photo at full size">
+            <img src={media('bearing_housing_photo.jpg')} alt="Physical cylindrical bearing housing with a stepped bore and outer flange" width="810" height="1440" loading="lazy" />
+          </a>
+          <figcaption>Bearing housing.</figcaption>
         </figure>
       </div>
     </section>
@@ -275,9 +275,7 @@ const historicalPhotos = [
   .technical-note { margin-top: 32px; }
   .database-link { margin: 22px 0; }
   .database-link a { font-size: 16px; }
-  .photo-placeholder { min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; border: 1px solid var(--line); border-radius: 3px; background: white; text-align: center; }
-  .photo-placeholder span { color: var(--ink); font-size: 16px; }
-  .photo-placeholder p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
+  .photo-slots img { aspect-ratio: 3 / 4; object-fit: cover; }
   .drawing-grid, .history-grid, .photo-slots, .calculation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
   .drawing-grid .hpa-figure, .history-grid .hpa-figure, .photo-slots .hpa-figure, .calculation-grid .hpa-figure { margin: 0; }
   .calculation-grid img { aspect-ratio: 5 / 4; object-fit: contain; background: #090909; }
@@ -293,6 +291,5 @@ const historicalPhotos = [
     .calculation-grid img { aspect-ratio: auto; }
     .drawing-grid img { height: auto; max-height: 600px; padding: 10px; }
     .history-grid { max-width: 560px; }
-    .photo-placeholder { min-height: 200px; }
   }
 </style>
