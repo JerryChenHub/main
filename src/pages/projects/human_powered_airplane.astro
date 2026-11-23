@@ -81,9 +81,9 @@ const historicalPhotos = [
       <div class="section-copy">
         <h2 id="team-heading">My role on the team</h2>
         <p>
-          I coordinate the project, assign tasks, and integrate my teammates' CAD
-          models into the aircraft assembly. I also handle fundraising. Alongside
-          this, I work on the aerodynamic design, drivetrain, gearbox, and airframe structure.
+          As team lead, I coordinate the project, assign tasks, integrate my teammates'
+          CAD models, and handle fundraising. My design work covers the overall aircraft,
+          aerodynamics, drivetrain, gearbox, and airframe structure.
         </p>
       </div>
       <figure class="hpa-figure team-photo">
@@ -96,46 +96,48 @@ const historicalPhotos = [
       <div class="section-copy">
         <h2 id="aerodynamics-heading">Choosing the aircraft parameters</h2>
         <p>
-          Early in the design, I used XFOIL to calculate aerodynamic data for different
-          airfoils and compare wing designs across a range of spans and areas. I used
-          XROTOR to optimize the propeller and reduce its induced losses.
+          The early design involved comparing different airfoils, wingspans, and wing
+          areas. XFOIL provided the aerodynamic data, while XROTOR helped optimize the
+          propeller and reduce its induced losses.
         </p>
         <p>
-          I put these results into an online database to help us narrow down the
-          aircraft's main parameters. All the data on the site are precomputed with
-          XFOIL and XROTOR, so we can compare designs without running each calculation again.
+          I built an online database from these results to help narrow down the
+          aircraft's main parameters. All the data are precomputed with XFOIL and
+          XROTOR, so we can compare designs without running each calculation again.
         </p>
         <div class="link-row database-link">
           <a href="https://hpaxfoil.jerryc.link/Xfoil/" target="_blank" rel="noreferrer">Explore the aircraft design database</a>
         </div>
         <p>
-          This helped a lot with the early decisions. I chose a <strong>28 m wingspan</strong> and <strong>40 m² wing area</strong>, and used the XFOIL data
-          to optimize the chord and twist distributions along the wing.
+          The database helped a lot with the early decisions. Based on these results,
+          I chose a <strong>28 m wingspan</strong> and <strong>40 m² wing area</strong>.
+          The chord and twist distributions were also optimized using the XFOIL data.
         </p>
       </div>
-      <figure class="hpa-figure analysis-figure">
+      <div class="calculation-grid">
+      <figure class="hpa-figure">
         <a href={media('xfoil_airfoil.jpg')} target="_blank" rel="noreferrer" aria-label="Open the DAE31 airfoil calculation at full size">
           <img src={media('xfoil_airfoil.jpg')} alt="XFOIL pressure distribution and geometry for the DAE31 airfoil at a Reynolds number of 600000 and an angle of attack of 4 degrees" width="1657" height="1326" loading="lazy" />
         </a>
         <figcaption>A DAE31 airfoil calculation in XFOIL, showing the pressure distribution and aerodynamic coefficients.</figcaption>
       </figure>
-      <figure class="hpa-figure analysis-figure">
+      <figure class="hpa-figure">
         <a href={media('xfoil_terminal.jpg')} target="_blank" rel="noreferrer" aria-label="Open the XFOIL calculation terminal at full size">
           <img src={media('xfoil_terminal.jpg')} alt="XFOIL terminal showing the DAE31 calculation converging and saving a point to the polar data file" width="980" height="511" loading="lazy" />
         </a>
         <figcaption>The calculation converging and saving its results to a polar file for the database.</figcaption>
       </figure>
+      </div>
     </section>
 
     <section class="hpa-section" aria-labelledby="mechanical-heading">
       <div class="section-copy">
         <h2 id="mechanical-heading">Drivetrain and gearbox</h2>
         <p>
-          I also design and model the drivetrain and gearbox, and prepare the
-          engineering drawings. I laid out the drivetrain to carry pedal power through
-          a chain, two 1:1 bevel gearboxes, and a vertical shaft to the propeller.
-          I account for the efficiency of each stage and the propeller when estimating
-          how much power the pilot needs to supply.
+          My work on the drivetrain includes the gearbox design, CAD models, and
+          engineering drawings. Pedal power passes through a chain, two 1:1 bevel
+          gearboxes, and a vertical shaft before reaching the propeller. Losses in
+          the transmission and propeller determine how much power the pilot needs to supply.
         </p>
       </div>
       <figure class="hpa-figure analysis-figure" data-source-figure="1">
@@ -160,10 +162,10 @@ const historicalPhotos = [
       </div>
       <div class="section-copy technical-note">
         <p>
-          I checked the 7075 T6 aluminum upper gearbox housing in ANSYS under a
-          1000 N downward load at the tail tube connection. The model gave a peak
-          unaveraged von Mises stress of 143.9 MPa and a maximum displacement of
-          0.299 mm. I use this analysis to check the housing's strength and stiffness.
+          Under a 1000 N downward load at the tail tube connection, the ANSYS model
+          of the 7075 T6 aluminum upper gearbox housing gave a peak unaveraged von
+          Mises stress of 143.9 MPa and a maximum displacement of 0.299 mm. These
+          results help check the housing's strength and stiffness.
         </p>
       </div>
       <figure class="hpa-figure stress-figure" data-source-figure="24">
@@ -192,10 +194,10 @@ const historicalPhotos = [
       <div class="section-copy">
         <h2 id="structure-heading">Airframe structure</h2>
         <p>
-          I use this frame layout to track how the pilot, wing, and tail loads pass
-          through the tubes, cables, and connections. I compare aluminum and carbon
-          tube sizes against bending, buckling, and deflection limits to reduce weight
-          while meeting the load requirements.
+          The frame carries the pilot, wing, and tail loads through its tubes, cables,
+          and connections. Tube sizing balances weight with strength and stiffness,
+          using bending, buckling, and deflection calculations to compare aluminum
+          and carbon options.
         </p>
       </div>
       <figure class="hpa-figure" data-source-figure="8">
@@ -206,9 +208,9 @@ const historicalPhotos = [
       </figure>
       <div class="section-copy technical-note">
         <p>
-          I bring my teammates' CAD into the full aircraft assembly to check how the
-          wing, frame, propeller, and drivetrain fit together, and update the design
-          as the individual parts develop.
+          The full CAD assembly combines the team's models in one aircraft. This lets
+          us check how the wing, frame, propeller, and drivetrain fit together as the
+          individual parts develop.
         </p>
       </div>
       <figure class="hpa-figure">
@@ -276,8 +278,9 @@ const historicalPhotos = [
   .photo-placeholder { min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; border: 1px solid var(--line); border-radius: 3px; background: white; text-align: center; }
   .photo-placeholder span { color: var(--ink); font-size: 16px; }
   .photo-placeholder p { margin: 8px 0 0; color: var(--muted); font-size: 14px; }
-  .drawing-grid, .history-grid, .photo-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
-  .drawing-grid .hpa-figure, .history-grid .hpa-figure, .photo-slots .hpa-figure { margin: 0; }
+  .drawing-grid, .history-grid, .photo-slots, .calculation-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 28px; }
+  .drawing-grid .hpa-figure, .history-grid .hpa-figure, .photo-slots .hpa-figure, .calculation-grid .hpa-figure { margin: 0; }
+  .calculation-grid img { aspect-ratio: 5 / 4; object-fit: contain; background: #090909; }
   .drawing-grid img { height: 350px; object-fit: contain; padding: 12px; }
   .history-section { border-top: 1px solid var(--line); padding-top: clamp(40px, 6vw, 60px); }
   .history-grid img { aspect-ratio: 3 / 2; object-fit: cover; }
@@ -286,7 +289,8 @@ const historicalPhotos = [
   @media (max-width: 720px) {
     .overview { grid-template-columns: 1fr; gap: 22px; margin-top: 28px; }
     .aircraft-overview { width: min(100%, 460px); margin-inline: auto; }
-    .drawing-grid, .history-grid, .photo-slots { grid-template-columns: 1fr; gap: 28px; }
+    .drawing-grid, .history-grid, .photo-slots, .calculation-grid { grid-template-columns: 1fr; gap: 28px; }
+    .calculation-grid img { aspect-ratio: auto; }
     .drawing-grid img { height: auto; max-height: 600px; padding: 10px; }
     .history-grid { max-width: 560px; }
     .photo-placeholder { min-height: 200px; }
