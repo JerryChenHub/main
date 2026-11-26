@@ -29,7 +29,11 @@ const withBase = (path: string) => `${base}${path.replace(/^\//, '')}`;
             <p>
               {paragraph.map((segment) =>
                 segment.url ? (
-                  <a href={segment.url} target="_blank" rel="noreferrer">{segment.text}</a>
+                  <a
+                    href={segment.url.startsWith('http') ? segment.url : withBase(segment.url)}
+                    target={segment.url.startsWith('http') ? '_blank' : undefined}
+                    rel={segment.url.startsWith('http') ? 'noreferrer' : undefined}
+                  >{segment.text}</a>
                 ) : (
                   segment.text
                 ),

@@ -1,0 +1,103 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+
+const base = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${base}${path}`;
+const performances = [
+  {
+    id: 'fantaisie_impromptu',
+    title: 'Fantaisie Impromptu',
+    composer: 'Frédéric Chopin',
+    detail: 'Op. 66',
+    duration: '0:58',
+  },
+  {
+    id: 'phantom_of_the_opera',
+    title: 'The Phantom of the Opera',
+    composer: 'Andrew Lloyd Webber',
+    detail: 'Piano arrangement by Francesco Parrino',
+    duration: '1:32',
+  },
+];
+---
+
+<SiteLayout
+  title="Piano"
+  description="Piano performances by Boyang Chen, featuring Chopin and The Phantom of the Opera."
+  image="media/piano/fantaisie_impromptu.jpg"
+>
+  <div class="shell piano-page">
+    <header class="piano-header">
+      <a class="home-link" href={withBase('')}>Home</a>
+      <h1>Piano</h1>
+      <p>A few pieces I enjoy playing.</p>
+    </header>
+
+    <div class="performances">
+      {performances.map((piece) => (
+        <section class="performance" aria-labelledby={`${piece.id}_title`}>
+          <div class="piece-heading">
+            <div>
+              <p class="composer">{piece.composer}</p>
+              <h2 id={`${piece.id}_title`}>{piece.title}</h2>
+              <p class="piece-detail">{piece.detail}</p>
+            </div>
+            <span class="duration" aria-label={`Duration ${piece.duration}`}>{piece.duration}</span>
+          </div>
+          <video
+            controls
+            playsinline
+            preload="none"
+            poster={withBase(`media/piano/${piece.id}.jpg`)}
+            width="1280"
+            height="720"
+            aria-label={`${piece.title}, performed by Boyang Chen, with a following score`}
+          >
+            <source src={withBase(`media/piano/${piece.id}.mp4`)} type="video/mp4" />
+            <p>Your browser cannot play this video. <a href={withBase(`media/piano/${piece.id}.mp4`)}>Open the performance</a>.</p>
+          </video>
+          <p class="score-credit">
+            {piece.id === 'fantaisie_impromptu' ? (
+              <>Score: <a href="https://noctavepiano.com/en/sheet-music/chopin-fantaisie-impromptu-op66/" target="_blank" rel="noreferrer">Noctave edition</a>, based on Mutopia · CC0.</>
+            ) : (
+              <>Score: Francesco Parrino · Musicnotes. Music © 1986 Andrew Lloyd Webber. Arrangement © 2021.</>
+            )}
+          </p>
+        </section>
+      ))}
+    </div>
+  </div>
+</SiteLayout>
+
+<script>
+  const players = document.querySelectorAll<HTMLVideoElement>('.performance video');
+  players.forEach((player) => {
+    player.addEventListener('play', () => {
+      players.forEach((other) => {
+        if (other !== player) other.pause();
+      });
+    });
+  });
+</script>
+
+<style>
+  .piano-page { padding-block: clamp(36px, 6vw, 68px) clamp(60px, 8vw, 100px); }
+  .piano-header { margin-bottom: clamp(40px, 6vw, 64px); }
+  .home-link { display: inline-block; margin-bottom: 36px; color: var(--muted); font-size: 14px; }
+  .piano-header h1 { margin-bottom: 18px; }
+  .piano-header > p { margin-bottom: 0; color: var(--muted); font-size: 20px; }
+  .performance + .performance { margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .piece-heading { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 20px; }
+  .composer { margin-bottom: 6px; color: var(--muted); font-size: 14px; }
+  h2 { margin-bottom: 8px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(27px, 4vw, 38px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; }
+  .piece-detail { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+  .duration { flex-shrink: 0; color: var(--muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+  video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #111; border-radius: 3px; }
+  .score-credit { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+  .score-credit a { color: var(--accent); }
+  @media (max-width: 480px) {
+    .piece-heading { gap: 12px; }
+    .piano-header > p { font-size: 18px; }
+    .performance + .performance { margin-top: 34px; padding-top: 30px; }
+  }
+</style>

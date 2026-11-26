@@ -28,7 +28,11 @@ export const profile = {
         text: ' to conduct experiments on propeller noise in special configurations.',
       },
     ],
-    [{ text: 'I am a student pilot and I play piano.' }],
+    [
+      { text: 'I am a student pilot and I play ' },
+      { text: 'piano', url: 'piano/' },
+      { text: '.' },
+    ],
   ],
   portrait: 'media/homepage_portrait.jpg',
   portraitAlt: 'Boyang Chen portrait',
