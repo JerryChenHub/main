@@ -12,6 +12,10 @@ const performances = [
     id: 'phantom_of_the_opera',
     title: 'The Phantom of the Opera',
   },
+  {
+    id: 'nocturne_op9_no1',
+    title: 'Nocturne in B flat Minor',
+  },
 ];
 ---
 
@@ -36,13 +40,13 @@ const performances = [
             controls
             playsinline
             preload="none"
-            poster={withBase(`media/piano/${piece.id}.jpg`)}
+            poster={withBase(`media/piano/${piece.id}.jpg${piece.id === 'fantaisie_impromptu' ? '?v=3' : ''}`)}
             width="1280"
             height="720"
             aria-label={`${piece.title}, performed by Boyang Chen, with a following score`}
           >
-            <source src={withBase(`media/piano/${piece.id}.mp4${piece.id === 'fantaisie_impromptu' ? '?v=2' : ''}`)} type="video/mp4" />
-            <p>Your browser cannot play this video. <a href={withBase(`media/piano/${piece.id}.mp4${piece.id === 'fantaisie_impromptu' ? '?v=2' : ''}`)}>Open the performance</a>.</p>
+            <source src={withBase(`media/piano/${piece.id}.mp4${piece.id === 'fantaisie_impromptu' ? '?v=3' : ''}`)} type="video/mp4" />
+            <p>Your browser cannot play this video. <a href={withBase(`media/piano/${piece.id}.mp4${piece.id === 'fantaisie_impromptu' ? '?v=3' : ''}`)}>Open the performance</a>.</p>
           </video>
         </section>
       ))}
